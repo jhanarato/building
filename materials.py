@@ -2,54 +2,9 @@
 
 import csv
 
-# Insulation products
-sound_screen_70 = {"name" : "Bradford SoundScreen Wall Batts 70mm",
-               "thickness" : 70,
-               "length" : 1160,
-               "width" : 580,
-               "r-value" : 2,
-               "pack-pieces" : 9,
-               "pack-meters-sqr" : 6.1,
-               "pack-coverage" : 6.8,
-               "code" : "182313" }
+import insulation
 
-sound_screen_88 = {"name" : "Bradford SoundScreen Wall Batts 88mm",
-               "thickness" : 88,
-               "length" : 1160,
-               "width" : 580,
-               "r-value" : 2.5,
-               "pack-pieces" : 7,
-               "pack-meters-sqr" : 4.7,
-               "pack-coverage" : 5.3,
-               "code" : "182286" }
-
-gold_hp_ceiling_240 = {"name" : "Bradford Gold High-Performance Ceiling Batts 240mm",
-               "thickness" : 240,
-               "length" : 1160,
-               "width" : 580,
-               "r-value" : 5,
-               "pack-pieces" : 8,
-               "pack-meters-sqr" : 5.4,
-               "pack-coverage" : 6.1,
-               "code" : "105419" }
-
-gold_hp_wall_90 = {"name" : "Bradford Gold High-Performance Wall Batts 90mm R2.5",
-                   "thickness" : 90,
-                   "length" : 1160,
-                   "width" : 570,
-                   "r-value" : 2.5,
-                   "pack-pieces" : 9,
-                   "pack-meters-sqr" : 6,
-                   "pack-coverage" : 6.7,
-                   "code" : "181471" }
-
-rockwool = {"name" : "Rockwool Slab, 60kg/m3",
-            "thickness" : 75,
-            "length" : 1200,
-            "width" : 600,
-            "code" : "rockwool" }
-
-products = [sound_screen_70, sound_screen_88, gold_hp_ceiling_240, gold_hp_wall_90, rockwool]
+products = insulation.products
 products_by_code = [(product["code"],product) for product in products]
 
 
@@ -99,49 +54,49 @@ disabled_wall = {"name" : "Disabled bathroom wall", "area" : 6.9}
 disabled_ceiling = {"name" : "Disabled bathroom ceiling", "area" : 9.6}
 
 # A list of tuples matching insulation product to section to insulate.
-product_section_match = [(ne_bedroom_n, rockwool),
-                         (ne_bedroom_e, rockwool),
-                         (ne_bedroom_s, sound_screen_70),
-                         (ne_bedroom_w, sound_screen_70),
+product_section_match = [(ne_bedroom_n, insulation.sound_screen_88),
+                         (ne_bedroom_e, insulation.sound_screen_88),
+                         (ne_bedroom_s, insulation.sound_screen_70),
+                         (ne_bedroom_w, insulation.sound_screen_70),
 
-                         (se_bedroom_n, sound_screen_70),
-                         (se_bedroom_e, rockwool),
-                         (se_bedroom_s, rockwool),
-                         (se_bedroom_w, sound_screen_70),
+                         (se_bedroom_n, insulation.sound_screen_70),
+                         (se_bedroom_e, insulation.sound_screen_88),
+                         (se_bedroom_s, insulation.sound_screen_88),
+                         (se_bedroom_w, insulation.sound_screen_70),
 
-                         (sw_bedroom_n, sound_screen_70),
-                         (sw_bedroom_e, sound_screen_70),
-                         (sw_bedroom_s, rockwool),
-                         (sw_bedroom_w, sound_screen_70),
+                         (sw_bedroom_n, insulation.sound_screen_70),
+                         (sw_bedroom_e, insulation.sound_screen_70),
+                         (sw_bedroom_s, insulation.sound_screen_88),
+                         (sw_bedroom_w, insulation.sound_screen_70),
 
-                         (nw_bedroom_n, rockwool),
-                         (nw_bedroom_e, sound_screen_70),
-                         (nw_bedroom_s, sound_screen_70),
-                         (nw_bedroom_w, sound_screen_70),
+                         (nw_bedroom_n, insulation.sound_screen_88),
+                         (nw_bedroom_e, insulation.sound_screen_70),
+                         (nw_bedroom_s, insulation.sound_screen_70),
+                         (nw_bedroom_w, insulation.sound_screen_70),
 
-                         (nw_bedroom_above_ceiling, gold_hp_wall_90),
-                         (ne_bedroom_above_ceiling, gold_hp_wall_90),
-                         (se_bedroom_above_ceiling, gold_hp_wall_90),
-                         (sw_bedroom_above_ceiling, gold_hp_wall_90),
+                         (nw_bedroom_above_ceiling, insulation.gold_hp_wall_90),
+                         (ne_bedroom_above_ceiling, insulation.gold_hp_wall_90),
+                         (se_bedroom_above_ceiling, insulation.gold_hp_wall_90),
+                         (sw_bedroom_above_ceiling, insulation.gold_hp_wall_90),
 
-                         (nw_bedroom_ceiling, gold_hp_wall_90),
-                         (ne_bedroom_ceiling, gold_hp_wall_90),
-                         (se_bedroom_ceiling, gold_hp_wall_90),
-                         (sw_bedroom_ceiling, gold_hp_wall_90),
+                         (nw_bedroom_ceiling, insulation.gold_hp_wall_90),
+                         (ne_bedroom_ceiling, insulation.gold_hp_wall_90),
+                         (se_bedroom_ceiling, insulation.gold_hp_wall_90),
+                         (sw_bedroom_ceiling, insulation.gold_hp_wall_90),
 
-                         (living_e, sound_screen_88),
-                         (living_s, gold_hp_wall_90),
-                         (living_w, gold_hp_wall_90),
-                         (living_ceiling, gold_hp_ceiling_240),
+                         (living_e, insulation.sound_screen_88),
+                         (living_s, insulation.gold_hp_wall_90),
+                         (living_w, insulation.gold_hp_wall_90),
+                         (living_ceiling, insulation.gold_hp_ceiling_240),
 
-                         (laundry_partition, sound_screen_88),
-                         (laundry_ceiliing, gold_hp_ceiling_240),
+                         (laundry_partition, insulation.sound_screen_88),
+                         (laundry_ceiliing, insulation.gold_hp_ceiling_240),
 
-                         (showers_partition, sound_screen_88),
-                         (showers_ceiliing, gold_hp_ceiling_240),
+                         (showers_partition, insulation.sound_screen_88),
+                         (showers_ceiliing, insulation.gold_hp_ceiling_240),
 
-                         (disabled_wall, gold_hp_wall_90),
-                         (disabled_ceiling, gold_hp_ceiling_240)]
+                         (disabled_wall, insulation.gold_hp_wall_90),
+                         (disabled_ceiling, insulation.gold_hp_ceiling_240)]
 
 
 # Get a dictionary with the key being the product code
