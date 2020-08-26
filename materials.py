@@ -130,5 +130,9 @@ def get_area_by_code():
 def display_area_by_product():
     for product in products:
         code = product["code"]
+        name = product["name"]
+        area = get_area_by_code()[code]
+        to_display = "%s - %s - %s" % (code, name, area)
+        print(to_display)
 
-print(get_area_by_code())
+display_area_by_product()
