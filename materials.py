@@ -23,7 +23,7 @@ sound_screen_88 = {"name" : "Bradford SoundScreen Wall Batts 88mm",
                "pack-coverage" : 5.3,
                "code" : "182286" }
 
-gold_hp_240 = {"name" : "Bradford Gold High-Performance Ceiling Batts 240mm",
+gold_hp_ceiling_240 = {"name" : "Bradford Gold High-Performance Ceiling Batts 240mm",
                "thickness" : 240,
                "length" : 1160,
                "width" : 580,
@@ -33,7 +33,19 @@ gold_hp_240 = {"name" : "Bradford Gold High-Performance Ceiling Batts 240mm",
                "pack-coverage" : 6.1,
                "code" : "105419" }
 
-products = [sound_screen_70, sound_screen_88, gold_hp_240]
+gold_hp_wall_90 = {"name" : "Bradford Gold High-Performance Wall Batts 90mm R2.5",
+                   "thickness" : 90,
+                   "length" : 1160,
+                   "width" : 570,
+                   "r-value" : 2.5,
+                   "pack-pieces" : 9,
+                   "pack-meters-sqr" : 6,
+                   "pack-coverage" : 6.7,
+                   "code" : "181471" }
+
+
+
+products = [sound_screen_70, sound_screen_88, gold_hp_ceiling_240, gold_hp_wall_90]
 products_by_code = [(product["code"],product) for product in products]
 
 
@@ -99,15 +111,15 @@ product_section_match = [(ne_bedroom_n, sound_screen_88),
                          (se_bedroom_ceiling, sound_screen_88),
                          (se_bedroom_ceiling, sound_screen_88),
                          (living_e, sound_screen_88),
-                         (living_s, sound_screen_88),
-                         (living_w, sound_screen_88),
-                         (living_ceiling, gold_hp_240),
+                         (living_s, gold_hp_wall_90),
+                         (living_w, gold_hp_wall_90),
+                         (living_ceiling, gold_hp_ceiling_240),
                          (laundry_partition, sound_screen_88),
-                         (laundry_ceiliing, gold_hp_240),
+                         (laundry_ceiliing, gold_hp_ceiling_240),
                          (showers_partition, sound_screen_88),
-                         (showers_ceiliing, gold_hp_240),
-                         (disabled_wall, sound_screen_88),
-                         (disabled_ceiling, gold_hp_240)]
+                         (showers_ceiliing, gold_hp_ceiling_240),
+                         (disabled_wall, gold_hp_wall_90),
+                         (disabled_ceiling, gold_hp_ceiling_240)]
 
 
 # Get a dictionary with the key being the product code
@@ -135,4 +147,14 @@ def display_area_by_product():
         to_display = "%s - %s - %s" % (code, name, area)
         print(to_display)
 
-display_area_by_product()
+def write_area_by_product():
+    with open("product_area.csv", "w") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["Product Code", "Product Description", "Area to Cover"])
+        for product in products:
+            code = product["code"]
+            name = product["name"]
+            area = get_area_by_code()[code]
+            writer.writerow([code, name, area])
+
+write_area_by_product()
