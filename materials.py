@@ -6,7 +6,7 @@ import insulation, config_1
 
 products = insulation.products
 products_by_code = [(product["code"],product) for product in products]
-product_section_match = config_1.product_section_match
+product_section_match = config_1.config
 
 # Get a dictionary with the key being the product code
 # and the value being the total area of that product.
