@@ -11,7 +11,7 @@ sound_screen_70 = {"name" : "Bradford SoundScreen Wall Batts 70mm",
                "pack-pieces" : 9,
                "pack-meters-sqr" : 6.1,
                "pack-coverage" : 6.8,
-               "product-code" : 182313 }
+               "code" : "182313" }
 
 sound_screen_88 = {"name" : "Bradford SoundScreen Wall Batts 88mm",
                "thickness" : 88,
@@ -21,7 +21,7 @@ sound_screen_88 = {"name" : "Bradford SoundScreen Wall Batts 88mm",
                "pack-pieces" : 7,
                "pack-meters-sqr" : 4.7,
                "pack-coverage" : 5.3,
-               "product-code" : 182286 }
+               "code" : "182286" }
 
 gold_hp_240 = {"name" : "Bradford Gold High-Performance Ceiling Batts 240mm",
                "thickness" : 240,
@@ -31,7 +31,11 @@ gold_hp_240 = {"name" : "Bradford Gold High-Performance Ceiling Batts 240mm",
                "pack-pieces" : 8,
                "pack-meters-sqr" : 5.4,
                "pack-coverage" : 6.1,
-               "product-code" : 105419 }
+               "code" : "105419" }
+
+products = [sound_screen_70, sound_screen_88, gold_hp_240]
+products_by_code = [(product["code"],product) for product in products]
+
 
 # Sections to insulate
 ne_bedroom_n = {"name" : "Northeast Bedroom, North Wall", "area" : 5.8 }
@@ -106,8 +110,25 @@ product_section_match = [(ne_bedroom_n, sound_screen_88),
                          (disabled_ceiling, gold_hp_240)]
 
 
-with open("materials.csv", 'w',  newline='') as csvfile:
-        match_writer = csv.writer(csvfile)
-        for match in product_section_match:
-            match_writer.writerow([match[0]["name"], match[1]["name"]])
+# Get a dictionary with the key being the product code
+# and the value being the total area of that product.
+def get_area_by_code():
+    code_to_area = {}
 
+    for product_by_code in products_by_code:
+        code_to_area[product_by_code[0]] = 0
+
+    for match in product_section_match:
+        section = match[0]
+        material = match[1]
+        area = section["area"]
+        code = material["code"]
+        code_to_area[code] += area
+
+    return code_to_area
+
+def display_area_by_product():
+    for product in products:
+        code = product["code"]
+
+print(get_area_by_code())
