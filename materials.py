@@ -43,9 +43,13 @@ gold_hp_wall_90 = {"name" : "Bradford Gold High-Performance Wall Batts 90mm R2.5
                    "pack-coverage" : 6.7,
                    "code" : "181471" }
 
+rockwool = {"name" : "Rockwool Slab, 60kg/m3",
+            "thickness" : 75,
+            "length" : 1200,
+            "width" : 600,
+            "code" : "rockwool" }
 
-
-products = [sound_screen_70, sound_screen_88, gold_hp_ceiling_240, gold_hp_wall_90]
+products = [sound_screen_70, sound_screen_88, gold_hp_ceiling_240, gold_hp_wall_90, rockwool]
 products_by_code = [(product["code"],product) for product in products]
 
 
@@ -70,10 +74,15 @@ nw_bedroom_e = {"name" : "Northwest Bedroom, East Wall", "area" : 11.0}
 nw_bedroom_s = {"name" : "Northwest Bedroom, South Wall", "area" : 4.1};
 nw_bedroom_w = {"name" : "Northwest Bedroom, West Wall", "area" : 8.2}
 
-ne_bedroom_ceiling = {"name" : "Northeast Bedroom, Ceiling",  "area" : 14.0 }
-se_bedroom_ceiling = {"name" : "Southeast Bedroom, Ceiling",  "area" : 14.0 }
-sw_bedroom_ceiling = {"name" : "Southwest Bedroom, Ceiling",  "area" : 14.0 }
-nw_bedroom_ceiling = {"name" : "Northwest Bedroom, Ceiling",  "area" : 14.0 }
+ne_bedroom_ceiling = {"name" : "Northeast Bedroom, Ceiling Below MLV",  "area" : 14.0 }
+se_bedroom_ceiling = {"name" : "Southeast Bedroom, Ceiling Below MLV",  "area" : 14.0 }
+sw_bedroom_ceiling = {"name" : "Southwest Bedroom, Ceiling Below MLV",  "area" : 14.0 }
+nw_bedroom_ceiling = {"name" : "Northwest Bedroom, Ceiling Below MLV",  "area" : 14.0 }
+
+ne_bedroom_above_ceiling = {"name" : "Northeast Bedroom, Ceiling Above MLV",  "area" : 14.0 }
+se_bedroom_above_ceiling = {"name" : "Southeast Bedroom, Ceiling Above MLV",  "area" : 14.0 }
+sw_bedroom_above_ceiling = {"name" : "Southwest Bedroom, Ceiling Above MLV",  "area" : 14.0 }
+nw_bedroom_above_ceiling = {"name" : "Northwest Bedroom, Ceiling Above MLV",  "area" : 14.0 }
 
 living_e = {"name" : "Living Area, East Wall, Adjacent to Bedroom", "area" : 17.6}
 living_s = {"name" : "Living Area, South Wall", "area" : 20.6}
@@ -90,34 +99,47 @@ disabled_wall = {"name" : "Disabled bathroom wall", "area" : 6.9}
 disabled_ceiling = {"name" : "Disabled bathroom ceiling", "area" : 9.6}
 
 # A list of tuples matching insulation product to section to insulate.
-product_section_match = [(ne_bedroom_n, sound_screen_88),
-                         (ne_bedroom_e, sound_screen_88),
+product_section_match = [(ne_bedroom_n, rockwool),
+                         (ne_bedroom_e, rockwool),
                          (ne_bedroom_s, sound_screen_70),
                          (ne_bedroom_w, sound_screen_70),
+
                          (se_bedroom_n, sound_screen_70),
-                         (se_bedroom_e, sound_screen_88),
-                         (se_bedroom_s, sound_screen_88),
+                         (se_bedroom_e, rockwool),
+                         (se_bedroom_s, rockwool),
                          (se_bedroom_w, sound_screen_70),
+
                          (sw_bedroom_n, sound_screen_70),
                          (sw_bedroom_e, sound_screen_70),
-                         (sw_bedroom_s, sound_screen_88),
+                         (sw_bedroom_s, rockwool),
                          (sw_bedroom_w, sound_screen_70),
-                         (nw_bedroom_n, sound_screen_88),
+
+                         (nw_bedroom_n, rockwool),
                          (nw_bedroom_e, sound_screen_70),
                          (nw_bedroom_s, sound_screen_70),
                          (nw_bedroom_w, sound_screen_70),
-                         (ne_bedroom_ceiling, sound_screen_88),
-                         (se_bedroom_ceiling, sound_screen_88),
-                         (se_bedroom_ceiling, sound_screen_88),
-                         (se_bedroom_ceiling, sound_screen_88),
+
+                         (nw_bedroom_above_ceiling, gold_hp_wall_90),
+                         (ne_bedroom_above_ceiling, gold_hp_wall_90),
+                         (se_bedroom_above_ceiling, gold_hp_wall_90),
+                         (sw_bedroom_above_ceiling, gold_hp_wall_90),
+
+                         (nw_bedroom_ceiling, gold_hp_wall_90),
+                         (ne_bedroom_ceiling, gold_hp_wall_90),
+                         (se_bedroom_ceiling, gold_hp_wall_90),
+                         (sw_bedroom_ceiling, gold_hp_wall_90),
+
                          (living_e, sound_screen_88),
                          (living_s, gold_hp_wall_90),
                          (living_w, gold_hp_wall_90),
                          (living_ceiling, gold_hp_ceiling_240),
+
                          (laundry_partition, sound_screen_88),
                          (laundry_ceiliing, gold_hp_ceiling_240),
+
                          (showers_partition, sound_screen_88),
                          (showers_ceiliing, gold_hp_ceiling_240),
+
                          (disabled_wall, gold_hp_wall_90),
                          (disabled_ceiling, gold_hp_ceiling_240)]
 
