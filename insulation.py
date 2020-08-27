@@ -58,9 +58,31 @@ pink_wall_90 = {"name" : "Fletcher Pink Wall Batts, 90mm R2.5",
                 "pack-coverage" : 9.1,
                 "code" : "900256"}
 
+earth_wall_25 = { "name" : "Earthwool R2.5 90mm",
+                  "thickness" : 90,
+                  "length" : 1160,
+                  "width" : 580,
+                  "r-value" : 2.5,
+                  "pack-pieces" : 14,
+                  "pack-meters-sqr" : 9.4,
+                  "pack-coverage" : 10.34,
+                  "code" : "earth-2.5"}
+
+earth_ceiling_50 = { "name" : "Earthwool R5.0 90mm",
+                  "thickness" : 210,
+                  "length" : 1160,
+                  "width" : 580,
+                  "r-value" : 5.0,
+                  "pack-pieces" : 11,
+                  "pack-meters-sqr" : 7.4,
+                  "pack-coverage" : 8.2,
+                  "code" : "earth-5.0"}
+
 products = [sound_screen_70,
             sound_screen_88,
             gold_hp_ceiling_240,
             gold_hp_wall_90,
             rockwool_90,
-            pink_wall_90]
+            pink_wall_90,
+            earth_wall_25,
+            earth_ceiling_50]

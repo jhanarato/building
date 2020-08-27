@@ -2,12 +2,12 @@
 
 import csv, math
 
-import insulation, config_1, config_2, config_3
+import insulation, config_1, config_2, config_3, config_4
 import insulwest
 
 prices = insulwest.prices
 
-configurations = [config_1, config_2, config_3]
+configurations = [config_1, config_2, config_3, config_4]
 
 products = insulation.products
 products_by_code = [(product["code"],product) for product in products]
