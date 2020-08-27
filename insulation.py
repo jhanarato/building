@@ -68,6 +68,16 @@ earth_wall_25 = { "name" : "Earthwool R2.5 90mm",
                   "pack-coverage" : 10.34,
                   "code" : "earth-2.5"}
 
+earth_wall_27 = { "name" : "Earthwool R2.7 90mm",
+                  "thickness" : 90,
+                  "length" : 1160,
+                  "width" : 580,
+                  "r-value" : 2.7,
+                  "pack-pieces" : 10,
+                  "pack-meters-sqr" : 6.7,
+                  "pack-coverage" : 7.4,
+                  "code" : "earth-2.7"}
+
 earth_ceiling_50 = { "name" : "Earthwool R5.0 90mm",
                   "thickness" : 210,
                   "length" : 1160,
@@ -85,4 +95,5 @@ products = [sound_screen_70,
             rockwool_90,
             pink_wall_90,
             earth_wall_25,
+            earth_wall_27,
             earth_ceiling_50]
