@@ -2,9 +2,9 @@
 
 import csv
 
-import insulation, config_1, config_2
+import insulation, config_1, config_2, config_3
 
-configurations = [config_1, config_2]
+configurations = [config_1, config_2, config_3]
 
 products = insulation.products
 products_by_code = [(product["code"],product) for product in products]
@@ -29,14 +29,16 @@ def get_area_by_code(configuration):
 def write_area_by_product():
     with open("product_area.csv", "w") as csvfile:
         writer = csv.writer(csvfile)
+        writer.writerow(["Product Code", "Product Description", "Area to Cover"])
+
         for config in configurations:
-            writer.writerow([config.description])
-            writer.writerow(["Product Code", "Product Description", "Area to Cover"])
+            writer.writerow(["", config.description])
             for product in products:
                 code = product["code"]
                 name = product["name"]
                 area = get_area_by_code(config.config)[code]
                 if area > 0:
                     writer.writerow([code, name, area])
+            writer.writerow([""])
 
 write_area_by_product()
