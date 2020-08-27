@@ -1,6 +1,6 @@
 import sections, insulation
 
-description = "Using only CSR Bradford Products"
+description = "Bradford with Pink Batts"
 
 # A list of tuples matching insulation product to section to insulate.
 config = [(sections.ne_bedroom_n, insulation.sound_screen_88),
