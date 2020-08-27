@@ -26,8 +26,8 @@ def get_area_by_code(configuration):
 
     return code_to_area
 
-def write_area_by_product():
-    with open("product_area.csv", "w") as csvfile:
+def write_quantities():
+    with open("quantities.csv", "w") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["Product Code", "Product Description", "Area to Cover"])
 
@@ -41,4 +41,13 @@ def write_area_by_product():
                     writer.writerow([code, name, area])
             writer.writerow([""])
 
-write_area_by_product()
+def write_config():
+    with open("configs.csv", "w") as csvfile:
+        for config in configurations:
+            writer = csv.writer(csvfile)
+            writer.writerow([config.description])
+            for section_and_product in config.config:
+                writer.writerow([section_and_product[0]["name"], section_and_product[1]["name"]])
+            writer.writerow([""])
+write_quantities()
+write_config()
