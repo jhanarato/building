@@ -1,8 +1,11 @@
 # A script to calculate building material requirements for the stables project
 
-import csv
+import csv, math
 
 import insulation, config_1, config_2, config_3
+import insulwest
+
+prices = insulwest.prices
 
 configurations = [config_1, config_2, config_3]
 
@@ -26,14 +29,21 @@ def get_area_by_code(configuration):
 
     return code_to_area
 
-# For a given product and area to cover, return the packs requi
+def get_price(code):
+    for price in prices:
+        if price["product"]["code"] == code:
+            return price["price"]
 
 # Create a CSV file with each product and the area
 # it is to cover for each configuration.
 def write_quantities():
     with open("quantities.csv", "w") as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(["Product Code", "Product Description", "Area to Cover", "Packs Required"])
+        writer.writerow(["Product Code",
+                         "Product Description",
+                         "Area to Cover",
+                         "Packs Required",
+                         "Cost"])
 
         for config in configurations:
             writer.writerow(["", config.description])
@@ -41,9 +51,14 @@ def write_quantities():
                 code = product["code"]
                 name = product["name"]
                 area = get_area_by_code(config.config)[code]
-                packs_required = area / product["pack-coverage"]
+                packs_required = math.ceil(area / product["pack-coverage"])
+                price = get_price(code)
+                if price > 0:
+                    cost = round(price * packs_required, 2)
+                else:
+                    cost = "Price not given"
                 if area > 0:
-                    writer.writerow([code, name, area, packs_required])
+                    writer.writerow([code, name, area, packs_required, cost])
             writer.writerow([""])
 
 # Create a CSV file with each configuration showing what material is used in each section.

@@ -1,27 +1,27 @@
 import sections, insulation
 
-description = "Bradford with Rockwool for Bedroom Interior Walls"
+description = "Bradford with Rockwool for Bedroom Exterior Walls"
 
 # A list of tuples matching insulation product to section to insulate.
-config = [(sections.ne_bedroom_n, insulation.sound_screen_88),
-          (sections.ne_bedroom_e, insulation.sound_screen_88),
-          (sections.ne_bedroom_s, insulation.rockwool),
-          (sections.ne_bedroom_w, insulation.rockwool),
+config = [(sections.ne_bedroom_n, insulation.rockwool_90),
+          (sections.ne_bedroom_e, insulation.rockwool_90),
+          (sections.ne_bedroom_s, insulation.sound_screen_70),
+          (sections.ne_bedroom_w, insulation.sound_screen_70),
 
-          (sections.se_bedroom_n, insulation.rockwool),
-          (sections.se_bedroom_e, insulation.sound_screen_88),
-          (sections.se_bedroom_s, insulation.sound_screen_88),
-          (sections.se_bedroom_w, insulation.rockwool),
+          (sections.se_bedroom_n, insulation.sound_screen_70),
+          (sections.se_bedroom_e, insulation.rockwool_90),
+          (sections.se_bedroom_s, insulation.rockwool_90),
+          (sections.se_bedroom_w, insulation.sound_screen_70),
 
-          (sections.sw_bedroom_n, insulation.rockwool),
-          (sections.sw_bedroom_e, insulation.rockwool),
-          (sections.sw_bedroom_s, insulation.sound_screen_88),
-          (sections.sw_bedroom_w, insulation.rockwool),
+          (sections.sw_bedroom_n, insulation.sound_screen_70),
+          (sections.sw_bedroom_e, insulation.sound_screen_70),
+          (sections.sw_bedroom_s, insulation.rockwool_90),
+          (sections.sw_bedroom_w, insulation.sound_screen_70),
 
-          (sections.nw_bedroom_n, insulation.sound_screen_88),
-          (sections.nw_bedroom_e, insulation.rockwool),
-          (sections.nw_bedroom_s, insulation.rockwool),
-          (sections.nw_bedroom_w, insulation.rockwool),
+          (sections.nw_bedroom_n, insulation.rockwool_90),
+          (sections.nw_bedroom_e, insulation.sound_screen_70),
+          (sections.nw_bedroom_s, insulation.sound_screen_70),
+          (sections.nw_bedroom_w, insulation.sound_screen_70),
 
           (sections.nw_bedroom_above_ceiling, insulation.gold_hp_wall_90),
           (sections.ne_bedroom_above_ceiling, insulation.gold_hp_wall_90),

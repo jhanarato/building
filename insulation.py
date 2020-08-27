@@ -39,8 +39,8 @@ gold_hp_wall_90 = {"name" : "Bradford Gold High-Performance Wall Batts 90mm R2.5
                    "pack-coverage" : 6.7,
                    "code" : "181471" }
 
-rockwool = {"name" : "Rockwool Slab, 60kg/m3",
-            "thickness" : 75,
+rockwool_90 = {"name" : "Rockwool Slab, 60kg/m3 90mm",
+            "thickness" : 90,
             "length" : 1200,
             "width" : 600,
             "pack-pieces" : 4,
@@ -62,5 +62,5 @@ products = [sound_screen_70,
             sound_screen_88,
             gold_hp_ceiling_240,
             gold_hp_wall_90,
-            rockwool,
+            rockwool_90,
             pink_wall_90]
