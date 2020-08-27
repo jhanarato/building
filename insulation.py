@@ -45,4 +45,19 @@ rockwool = {"name" : "Rockwool Slab, 60kg/m3",
             "width" : 600,
             "code" : "rockwool" }
 
-products = [sound_screen_70, sound_screen_88, gold_hp_ceiling_240, gold_hp_wall_90, rockwool]
+pink_wall_90 = {"name" : "Fletcher Pink Wall Batts, 90mm R2.5",
+                "thickness" : 90,
+                "length" : 1160,
+                "width" : 580,
+                "r-value" : 2.5,
+                "pack-pieces" : 12,
+                "pack-meters-sqr" : 8.1,
+                "pack-coverage" : 9.1,
+                "code" : "900256"}
+
+products = [sound_screen_70,
+            sound_screen_88,
+            gold_hp_ceiling_240,
+            gold_hp_wall_90,
+            rockwool,
+            pink_wall_90]
