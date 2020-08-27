@@ -39,10 +39,10 @@ def get_price(code):
 def write_quantities():
     with open("quantities.csv", "w") as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(["Product Code",
+        writer.writerow(["Code",
                          "Product Description",
-                         "Area to Cover",
-                         "Packs Required",
+                         "Area",
+                         "Packs",
                          "Cost"])
 
         for config in configurations:
