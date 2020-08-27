@@ -43,6 +43,9 @@ rockwool = {"name" : "Rockwool Slab, 60kg/m3",
             "thickness" : 75,
             "length" : 1200,
             "width" : 600,
+            "pack-pieces" : 4,
+            "pack-meters-sqr" : 2.9,
+            "pack-coverage" : 2.6,
             "code" : "rockwool" }
 
 pink_wall_90 = {"name" : "Fletcher Pink Wall Batts, 90mm R2.5",

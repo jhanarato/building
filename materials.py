@@ -26,10 +26,14 @@ def get_area_by_code(configuration):
 
     return code_to_area
 
+# For a given product and area to cover, return the packs requi
+
+# Create a CSV file with each product and the area
+# it is to cover for each configuration.
 def write_quantities():
     with open("quantities.csv", "w") as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(["Product Code", "Product Description", "Area to Cover"])
+        writer.writerow(["Product Code", "Product Description", "Area to Cover", "Packs Required"])
 
         for config in configurations:
             writer.writerow(["", config.description])
@@ -37,10 +41,12 @@ def write_quantities():
                 code = product["code"]
                 name = product["name"]
                 area = get_area_by_code(config.config)[code]
+                packs_required = area / product["pack-coverage"]
                 if area > 0:
-                    writer.writerow([code, name, area])
+                    writer.writerow([code, name, area, packs_required])
             writer.writerow([""])
 
+# Create a CSV file with each configuration showing what material is used in each section.
 def write_config():
     with open("configs.csv", "w") as csvfile:
         for config in configurations:
@@ -49,5 +55,6 @@ def write_config():
             for section_and_product in config.config:
                 writer.writerow([section_and_product[0]["name"], section_and_product[1]["name"]])
             writer.writerow([""])
+
 write_quantities()
 write_config()
