@@ -2,13 +2,13 @@
 
 import csv, math
 
-import insulation, config_1, config_2, config_3, config_4
+import insulation, config_1, config_2, config_3, config_4, config_5
 import insulwest, perth_building_materials
 
 prices = [insulwest.prices, perth_building_materials.prices]
 vendor_names = [insulwest.company, perth_building_materials.company]
 
-configurations = [config_1, config_2, config_3, config_4]
+configurations = [config_1, config_2, config_3, config_4, config_5]
 
 products = insulation.products
 products_by_code = [(product["code"],product) for product in products]
