@@ -6,6 +6,7 @@ import insulation, config_1, config_2, config_3, config_4
 import insulwest, perth_building_materials
 
 prices = [insulwest.prices, perth_building_materials.prices]
+vendor_names = [insulwest.company, perth_building_materials.company]
 
 configurations = [config_1, config_2, config_3, config_4]
 
@@ -49,8 +50,7 @@ def write_quantities():
         writer.writerow(["Code",
                          "Product Description",
                          "Area",
-                         "Packs",
-                         "Cost"])
+                         "Packs"] + vendor_names)
 
         for config in configurations:
             writer.writerow(["", config.description])
