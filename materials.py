@@ -3,9 +3,9 @@
 import csv, math
 
 import insulation, config_1, config_2, config_3, config_4
-import insulwest
+import insulwest, perth_building_materials
 
-prices = insulwest.prices
+prices = [insulwest.prices, perth_building_materials.prices]
 
 configurations = [config_1, config_2, config_3, config_4]
 
@@ -29,10 +29,17 @@ def get_area_by_code(configuration):
 
     return code_to_area
 
-def get_price(code):
-    for price in prices:
-        if price["product"]["code"] == code:
-            return price["price"]
+# Get a list of companies and their price for a given product.
+def get_prices_per_product(product_code):
+    prices_per_product = []
+    for product in products:
+        if product["code"] == product_code:
+            for vendor_prices in prices:
+                for vendor_price in vendor_prices:
+                    if vendor_price["product"]["code"] == product_code:
+                        prices_per_product.append({ "company" : "Name",
+                                                    "price" : vendor_price["price"]})
+    return prices_per_product
 
 # Create a CSV file with each product and the area
 # it is to cover for each configuration.
@@ -52,13 +59,16 @@ def write_quantities():
                 name = product["name"]
                 area = get_area_by_code(config.config)[code]
                 packs_required = math.ceil(area / product["pack-coverage"])
-                price = get_price(code)
-                if price > 0:
-                    cost = round(price * packs_required, 2)
-                else:
-                    cost = "Price not given"
+                prices_per_product = get_prices_per_product(code)
+                costs = []
+                for price in prices_per_product:
+                    if price["price"] > 0:
+                        cost = round(price["price"] * packs_required, 2)
+                    else:
+                        cost = "Price not given"
+                    costs.append(cost)
                 if area > 0:
-                    writer.writerow([code, name, area, packs_required, cost])
+                    writer.writerow([code, name, area, packs_required] + costs)
             writer.writerow([""])
 
 # Create a CSV file with each configuration showing what material is used in each section.
