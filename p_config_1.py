@@ -1,6 +1,6 @@
 import sections, plasterboard
 
-description = "GTEK Fire Only"
+description = "Fire & Standard 13mm x 2400 x 1200"
 
 # A list of tuples matching insulation product to section to insulate.
 config = [(sections.ne_bedroom_n, plasterboard.gtek_fire_2400_by_1200),
