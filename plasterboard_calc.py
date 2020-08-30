@@ -1,5 +1,5 @@
 import plasterboard, perth_building_materials, p_config_1
-import csv
+import csv, math
 
 prices = [perth_building_materials.prices]
 configurations = [p_config_1]
@@ -16,10 +16,9 @@ def get_area_by_code(configuration):
 
     for match in configuration:
         section = match[0]
-        material = match[1]
-        code = material["code"]
+        product = match[1]
+        code = product["code"]
         area = section["area"]
-        #area = material["length"] * material["width"]
         code_to_area[code] += area
 
     return code_to_area
@@ -44,7 +43,8 @@ def write_plasterboard():
             for product in products:
                 code = product["code"]
                 name = product["name"]
-                area = get_area_by_code(config.config)[code]
-                writer.writerow([name, area, "sheets needed?"])
+                area_to_cover = get_area_by_code(config.config)[code]
+                sheets = math.ceil(area_to_cover / (product["length"] * product["width"]))
+                writer.writerow([name, area_to_cover, sheets])
 
 write_plasterboard()

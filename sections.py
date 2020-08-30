@@ -55,5 +55,3 @@ for wall in bedroom_walls:
     area += wall["area"]
 
 plasterboard_layer_two = { "name" : "Second layer of plasterboard", "area" : area * 2}
-
-print("Area %f", plasterboard_layer_two["area"])
