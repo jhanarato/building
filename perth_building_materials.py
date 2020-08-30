@@ -11,4 +11,5 @@ prices = [{ "product" : insulation.rockwool_90, "price" :           0},
           { "product" : insulation.earth_wall_25, "price" :         65.28},
           { "product" : insulation.earth_wall_27, "price" :         95.00},
           { "product" : insulation.earth_ceiling_50, "price" :      69.09},
-          { "product" : plasterboard.gtek_fire_2400_by_1200, "price" : 12.56}]
+          { "product" : plasterboard.gtek_fire_2400_by_1200, "price" : 20.56},
+          { "product" : plasterboard.gtek_standard_2400_by_1200, "price" : 12.78}]
