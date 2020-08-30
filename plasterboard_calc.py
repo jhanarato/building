@@ -34,17 +34,37 @@ def get_prices_per_product(product_code):
                                                     "price" : vendor_price["price"]})
     return prices_per_product
 
+def get_prices_per_product(product_code):
+    prices_per_product = []
+    for product in products:
+        if product["code"] == product_code:
+            for vendor_prices in prices:
+                for vendor_price in vendor_prices:
+                    if vendor_price["product"]["code"] == product_code:
+                        prices_per_product.append({ "company" : "Name",
+                                                    "price" : vendor_price["price"]})
+    return prices_per_product
+
 def write_plasterboard():
     with open("plasterboard.csv", "w") as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(["Product", "Area to Cover", "Sheets Needed"] + vendor_names)
+        writer.writerow(["Product", "Area to Cover", "Sheets Required"] + vendor_names)
         for config in configurations:
             writer.writerow(["", config.description])
             for product in products:
                 code = product["code"]
                 name = product["name"]
                 area_to_cover = get_area_by_code(config.config)[code]
-                sheets = math.ceil(area_to_cover / (product["length"] * product["width"]))
-                writer.writerow([name, area_to_cover, sheets])
+                sheets_required = math.ceil(area_to_cover / (product["length"] * product["width"]))
+                prices_per_product = get_prices_per_product(code)
+                costs = []
+                for price in prices_per_product:
+                    if price["price"] > 0:
+                        cost = round(price["price"] * sheets_required, 2)
+                    else:
+                        cost = "Price not given"
+                    costs.append(cost)
+                if area_to_cover > 0:
+                    writer.writerow([name, area_to_cover, sheets_required] + costs)
 
 write_plasterboard()
